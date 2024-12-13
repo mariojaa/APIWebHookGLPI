@@ -1,22 +1,4 @@
-{
-  "TicketId": "0034207",
-  "FollowupDescription": "T\u00E9cnico realizou atualiza\u00E7\u00E3o no sistema.",
-  "NumberOfFollowups": "5",
-  "Requesters": "Carlos Silva",
-  "AssignedToTechnician": "Ana Maria",
-  "Status": "Conclu\u00EDdo",
-  "Priority": "M\u00E9dia"
-}
-{
-  "TicketId": "0034207",
-  "FollowupDescription": "T\u00E9cnico realizou atualiza\u00E7\u00E3o no sistema.",
-  "NumberOfFollowups": "5",
-  "Requesters": "Carlos Silva",
-  "AssignedToTechnician": "Ana Maria",
-  "Status": "Conclu\u00EDdo",
-  "Priority": "M\u00E9dia"
-}
-{
+[13/12/2024 15:46:05] {
   "TicketId": "0034207",
   "FollowupDescription": "Técnico realizou atualização no sistema.",
   "NumberOfFollowups": "5",
@@ -25,7 +7,9 @@
   "Status": "Concluído",
   "Priority": "Média"
 }
-{
+
+---------------------------------------------------
+[13/12/2024 15:47:32] {
   "TicketId": "0034207",
   "FollowupDescription": "Técnico realizou atualização no sistema.",
   "NumberOfFollowups": "5",
@@ -34,7 +18,31 @@
   "Status": "Concluído",
   "Priority": "Média"
 }
-{
+
+---------------------------------------------------
+[13/12/2024 16:04:12] {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:04:15] {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:04:34] {
   "TicketId": "34207",
   "FollowupDescription": "Técnico realizou atualização no sistema.",
   "NumberOfFollowups": "5",
@@ -43,7 +51,9 @@
   "Status": "Concluído",
   "Priority": "Média"
 }
-{
+
+---------------------------------------------------
+[13/12/2024 16:06:46] {
   "TicketId": "34207",
   "FollowupDescription": "Técnico realizou atualização no sistema.",
   "NumberOfFollowups": "5",
@@ -52,7 +62,9 @@
   "Status": "Concluído",
   "Priority": "Média"
 }
-{
+
+---------------------------------------------------
+[13/12/2024 16:06:48] {
   "TicketId": "34207",
   "FollowupDescription": "Técnico realizou atualização no sistema.",
   "NumberOfFollowups": "5",
@@ -61,3 +73,16 @@
   "Status": "Concluído",
   "Priority": "Média"
 }
+
+---------------------------------------------------
+[13/12/2024 16:20:23] {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------

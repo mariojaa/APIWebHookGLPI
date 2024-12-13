@@ -1,0 +1,345 @@
+[13/12/2024 14:23:46] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 14:33:39] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 14:50:20] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 14:54:05] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 14:54:08] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 14:54:12] Corpo da solicitação recebido: 
+---------------------------------------------------
+[13/12/2024 14:56:41] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:28:19] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:29:08] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:29:57] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:36:38] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:36:38] Erro ao processar o webhook: An error occurred while saving the entity changes. See the inner exception for details.
+Exception: An error occurred while saving the entity changes. See the inner exception for details.
+StackTrace:    at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at WebhookController.ReceiveWebhook() in C:\Users\marioaraujo\source\repos\APIChatAgent\Controllers\WebhookController.cs:line 77
+---------------------------------------------------
+[13/12/2024 15:36:48] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:36:48] Erro ao processar o webhook: An error occurred while saving the entity changes. See the inner exception for details.
+Exception: An error occurred while saving the entity changes. See the inner exception for details.
+StackTrace:    at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at WebhookController.ReceiveWebhook() in C:\Users\marioaraujo\source\repos\APIChatAgent\Controllers\WebhookController.cs:line 77
+---------------------------------------------------
+[13/12/2024 15:37:00] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:40:56] Corpo da solicitação recebido: {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:45:18] Corpo da solicitação recebido (bytes): ew0KICAiVGlja2V0SWQiOiAiMDAzNDIwNyIsDQogICJGb2xsb3d1cERlc2NyaXB0aW9uIjogIlTDqWNuaWNvIHJlYWxpem91IGF0dWFsaXphw6fDo28gbm8gc2lzdGVtYS4iLA0KICAiTnVtYmVyT2ZGb2xsb3d1cHMiOiAiNSIsDQogICJSZXF1ZXN0ZXJzIjogIkNhcmxvcyBTaWx2YSIsDQogICJBc3NpZ25lZFRvVGVjaG5pY2lhbiI6ICJBbmEgTWFyaWEiLA0KICAiU3RhdHVzIjogIkNvbmNsdcOtZG8iLA0KICAiUHJpb3JpdHkiOiAiTcOpZGlhIg0KfQ0K
+---------------------------------------------------
+[13/12/2024 15:45:18] Corpo da solicitação recebido (raw): {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:45:18] Caracteres nulos removidos do início do JSON
+---------------------------------------------------
+[13/12/2024 15:45:18] JSON é sintaticamente válido
+---------------------------------------------------
+[13/12/2024 15:45:21] Corpo da solicitação recebido (bytes): ew0KICAiVGlja2V0SWQiOiAiMDAzNDIwNyIsDQogICJGb2xsb3d1cERlc2NyaXB0aW9uIjogIlTDqWNuaWNvIHJlYWxpem91IGF0dWFsaXphw6fDo28gbm8gc2lzdGVtYS4iLA0KICAiTnVtYmVyT2ZGb2xsb3d1cHMiOiAiNSIsDQogICJSZXF1ZXN0ZXJzIjogIkNhcmxvcyBTaWx2YSIsDQogICJBc3NpZ25lZFRvVGVjaG5pY2lhbiI6ICJBbmEgTWFyaWEiLA0KICAiU3RhdHVzIjogIkNvbmNsdcOtZG8iLA0KICAiUHJpb3JpdHkiOiAiTcOpZGlhIg0KfQ0K
+---------------------------------------------------
+[13/12/2024 15:45:21] Corpo da solicitação recebido (raw): {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:45:21] Caracteres nulos removidos do início do JSON
+---------------------------------------------------
+[13/12/2024 15:45:21] JSON é sintaticamente válido
+---------------------------------------------------
+[13/12/2024 15:46:05] Corpo da solicitação recebido (bytes): ew0KICAiVGlja2V0SWQiOiAiMDAzNDIwNyIsDQogICJGb2xsb3d1cERlc2NyaXB0aW9uIjogIlTDqWNuaWNvIHJlYWxpem91IGF0dWFsaXphw6fDo28gbm8gc2lzdGVtYS4iLA0KICAiTnVtYmVyT2ZGb2xsb3d1cHMiOiAiNSIsDQogICJSZXF1ZXN0ZXJzIjogIkNhcmxvcyBTaWx2YSIsDQogICJBc3NpZ25lZFRvVGVjaG5pY2lhbiI6ICJBbmEgTWFyaWEiLA0KICAiU3RhdHVzIjogIkNvbmNsdcOtZG8iLA0KICAiUHJpb3JpdHkiOiAiTcOpZGlhIg0KfQ0K
+---------------------------------------------------
+[13/12/2024 15:46:05] Corpo da solicitação recebido (raw): {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 15:46:05] Caracteres nulos removidos do início do JSON
+---------------------------------------------------
+[13/12/2024 15:46:05] JSON é sintaticamente válido
+---------------------------------------------------
+[13/12/2024 15:47:32] Corpo da solicitação recebido (raw): {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:04:12] Corpo da solicitação recebido (raw): {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:04:15] Corpo da solicitação recebido (raw): {
+  "TicketId": "0034207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:04:34] Corpo da solicitação recebido (raw): {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:06:46] Corpo da solicitação recebido (raw): {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:06:47] Erro ao processar o webhook: An error occurred while saving the entity changes. See the inner exception for details.
+Exception: An error occurred while saving the entity changes. See the inner exception for details.
+StackTrace:    at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at WebhookController.ReceiveWebhook() in C:\Users\marioaraujo\source\repos\APIChatAgent\Controllers\WebhookController.cs:line 78
+---------------------------------------------------
+[13/12/2024 16:06:48] Corpo da solicitação recebido (raw): {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 16:06:48] Erro ao processar o webhook: An error occurred while saving the entity changes. See the inner exception for details.
+Exception: An error occurred while saving the entity changes. See the inner exception for details.
+StackTrace:    at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeResultSetAsync(Int32 startCommandIndex, RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.AffectedCountModificationCommandBatch.ConsumeAsync(RelationalDataReader reader, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Update.Internal.SqlServerModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at WebhookController.ReceiveWebhook() in C:\Users\marioaraujo\source\repos\APIChatAgent\Controllers\WebhookController.cs:line 78
+---------------------------------------------------
+[13/12/2024 16:20:20] Corpo da solicitação recebido (raw): {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------

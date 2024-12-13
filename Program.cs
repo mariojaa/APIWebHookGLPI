@@ -1,31 +1,43 @@
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuração do DbContext para usar o SQL Server
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
+
 // Adiciona o SignalR ao contêiner de serviços
-builder.Services.AddSignalR();  // IMPORTANTE: Adicionar o SignalR
+builder.Services.AddSignalR();
 
-// Adiciona serviços ao container
-builder.Services.AddControllers(); // Adiciona suporte a controllers
-
-// Configuração opcional: Adiciona suporte ao Swagger (documentação da API)
+// Adiciona serviços ao contêiner
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Cria a aplicação
+// Configuração opcional de CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
-// Configura o pipeline de requisições HTTP
+// Configura CORS
+app.UseCors("AllowAll");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection(); // Redireciona para HTTPS, se necessário
+app.UseHttpsRedirection();
+app.UseAuthorization();
 
-app.UseAuthorization(); // Configura a autorização (se aplicável)
+app.MapControllers();
+app.MapHub<NotificationHub>("/notifications");
 
-app.MapControllers(); // Mapeia automaticamente as controllers da API
-
-// Inicia o aplicativo
 app.Run();
