@@ -17,7 +17,7 @@ namespace APIChatAgent.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TicketId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TicketId = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FollowupDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NumberOfFollowups = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Requesters = table.Column<string>(type: "nvarchar(max)", nullable: false),

@@ -86,3 +86,36 @@
 }
 
 ---------------------------------------------------
+[13/12/2024 16:29:43] {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 17:28:25] {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 17:35:36] {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APIChatAgent.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241213190635_Inicio")]
+    [Migration("20241213202534_Inicio")]
     partial class Inicio
     {
         /// <inheritdoc />
@@ -34,40 +34,34 @@ namespace APIChatAgent.Migrations
 
                     b.Property<string>("AssignedToTechnician")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasAnnotation("Relational:JsonPropertyName", "AssignedToTechnician");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FollowupDescription")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasAnnotation("Relational:JsonPropertyName", "FollowupDescription");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumberOfFollowups")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasAnnotation("Relational:JsonPropertyName", "NumberOfFollowups");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Priority")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasAnnotation("Relational:JsonPropertyName", "Priority");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Requesters")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasAnnotation("Relational:JsonPropertyName", "Requesters");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasAnnotation("Relational:JsonPropertyName", "Status");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TicketId")
-                        .HasColumnType("nvarchar(max)")
-                        .HasAnnotation("Relational:JsonPropertyName", "TicketId");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

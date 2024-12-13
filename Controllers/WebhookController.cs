@@ -30,39 +30,54 @@ public class WebhookController : ControllerBase
             await LogDebugInfoAsync($"Corpo da solicitação recebido (raw): {body}");
             await SaveRawWebhookData(body);
 
-            // Tenta extrair informações do formato de log
-            var lines = body.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var lines = body.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
-            // Cria um objeto WebhookData com as informações disponíveis
-            var webhookData = new WebhookData
+            string ticketId = lines[0].Trim();
+            if (string.IsNullOrEmpty(ticketId) || !ticketId.All(char.IsDigit))
             {
-                TicketId = DateTime.Now.Ticks.ToString(), // ID temporário
-                FollowupDescription = string.Join(" ", lines), // Todo o conteúdo como descrição
-                NumberOfFollowups = "1",
-                Requesters = lines.FirstOrDefault(l => l.Contains("Mario Araujo")) ?? "Desconhecido",
-                AssignedToTechnician = "Não especificado",
-                Status = "Atualizado",
-                Priority = "Normal"
-            };
+                throw new Exception($"TicketId inválido ou não encontrado: '{ticketId}'");
+            }
+
+            string lastMessage = "Sem descrição";
+            bool foundDate = false;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Trim().StartsWith("13-12-2024"))
+                {
+                    foundDate = true;
+
+                    if (i + 2 < lines.Length)
+                    {
+
+                        lastMessage = System.Text.RegularExpressions.Regex.Replace(
+                            lines[i + 2],
+                            "<[^>]+>",
+                            "").Trim();
+                        break;
+                    }
+                }
+            }
 
             var webhookLog = new WebhookLog
             {
-                TicketId = webhookData.TicketId,
-                FollowupDescription = webhookData.FollowupDescription,
-                NumberOfFollowups = webhookData.NumberOfFollowups,
-                Requesters = webhookData.Requesters,
-                AssignedToTechnician = webhookData.AssignedToTechnician,
-                Status = webhookData.Status,
-                Priority = webhookData.Priority,
+                TicketId = ticketId.TrimStart('0'),
+                FollowupDescription = lastMessage,
+                NumberOfFollowups = "1",
+                Requesters = "Mario Araujo",
+                AssignedToTechnician = "Não especificado",
+                Status = "Atualizado",
+                Priority = "Normal",
                 CreatedAt = DateTime.UtcNow
             };
+
+            await LogDebugInfoAsync($"Dados extraídos - TicketId: {webhookLog.TicketId}, Mensagem: {webhookLog.FollowupDescription}");
 
             _dbContext.WebhookLogs.Add(webhookLog);
             await _dbContext.SaveChangesAsync();
 
-            await _hubContext.Clients.All.SendAsync("ReceiveNotification", webhookData.TicketId, webhookData.FollowupDescription);
+            await _hubContext.Clients.All.SendAsync("ReceiveNotification", webhookLog.TicketId, webhookLog.FollowupDescription);
 
-            return Ok(webhookData);
+            return Ok(webhookLog);
         }
         catch (Exception ex)
         {
@@ -102,15 +117,4 @@ public class WebhookController : ControllerBase
             Console.WriteLine($"Erro ao salvar no arquivo de debug: {debugEx.Message}");
         }
     }
-}
-
-public class WebhookData
-{
-    public string TicketId { get; set; }
-    public string FollowupDescription { get; set; }
-    public string NumberOfFollowups { get; set; }
-    public string Requesters { get; set; }
-    public string AssignedToTechnician { get; set; }
-    public string Status { get; set; }
-    public string Priority { get; set; }
 }

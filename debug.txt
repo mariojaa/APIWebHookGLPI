@@ -343,3 +343,36 @@ StackTrace:    at Microsoft.EntityFrameworkCore.Update.AffectedCountModification
 }
 
 ---------------------------------------------------
+[13/12/2024 16:29:43] Corpo da solicitação recebido (raw): {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 17:28:24] Corpo da solicitação recebido (raw): {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
+[13/12/2024 17:35:36] Corpo da solicitação recebido (raw): {
+  "TicketId": "34207",
+  "FollowupDescription": "Técnico realizou atualização no sistema.",
+  "NumberOfFollowups": "5",
+  "Requesters": "Carlos Silva",
+  "AssignedToTechnician": "Ana Maria",
+  "Status": "Concluído",
+  "Priority": "Média"
+}
+
+---------------------------------------------------
