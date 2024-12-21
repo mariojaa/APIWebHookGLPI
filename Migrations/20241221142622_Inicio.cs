@@ -12,6 +12,21 @@ namespace APIChatAgent.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "TaskLogs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TaskId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TaskDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TaskLogs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "WebhookLogs",
                 columns: table => new
                 {
@@ -35,6 +50,9 @@ namespace APIChatAgent.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "TaskLogs");
+
             migrationBuilder.DropTable(
                 name: "WebhookLogs");
         }
