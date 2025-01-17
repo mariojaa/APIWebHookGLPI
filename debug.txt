@@ -1,0 +1,6 @@
+[17/01/2025 09:31:57] Corpo da solicitação recebido (raw): 
+---------------------------------------------------
+[17/01/2025 09:31:57] Erro ao processar o webhook: TicketId inválido ou não encontrado: ''
+Exception: TicketId inválido ou não encontrado: ''
+StackTrace:    at WebhookController.ReceiveWebhook() in C:\Users\marioaraujo\Source\Repos\mariojaa\APIWebHookGLPI\Controllers\WebhookController.cs:line 38
+---------------------------------------------------

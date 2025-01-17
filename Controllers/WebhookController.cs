@@ -30,92 +30,146 @@ public class WebhookController : ControllerBase
             await LogDebugInfoAsync($"Corpo da solicitação recebido (raw): {body}");
             await SaveRawWebhookData(body);
 
-            var lines = body.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+            var lines = body.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            
+            var webhookRecive = new WebHookRecive();
 
-            // O primeiro valor é o ticketId
-            string ticketId = lines[0].Trim();
-            if (string.IsNullOrEmpty(ticketId) || !ticketId.All(char.IsDigit))
+            // Processar informações do ticket
+            foreach (var line in lines)
             {
-                throw new Exception($"TicketId inválido ou não encontrado: '{ticketId}'");
+                if (line.StartsWith("- **ID do Ticket:**"))
+                    webhookRecive.TicketId = ExtractValue(line, "**ID do Ticket:**").TrimStart('0');
+                else if (line.StartsWith("- **Título:**"))
+                    webhookRecive.Title = ExtractValue(line, "**Título:**");
+                else if (line.StartsWith("- **Usuário(s) Responsável(is):**"))
+                    webhookRecive.Assignees = ExtractValue(line, "**Usuário(s) Responsável(is):**");
+                else if (line.StartsWith("- **Status do Ticket:**"))
+                    webhookRecive.Status = ExtractValue(line, "**Status do Ticket:**");
+                else if (line.StartsWith("- **Prioridade:**"))
+                    webhookRecive.Priority = ExtractValue(line, "**Prioridade:**");
+                else if (line.StartsWith("- **Autor:**"))
+                    webhookRecive.Author = ExtractValue(line, "**Autor:**");
             }
 
-            // O segundo valor é o número de mensagens
-            int numberOfMessages = int.Parse(lines[1].Trim());
-
-            // Informações do ticket
-            string assignees = lines[2].Trim(); // Usuário(s) responsável(is)
-            string status = lines[3].Trim(); // Status do ticket
-            string priority = lines[4].Trim(); // Prioridade do ticket
-
-            // Processar as mensagens
-            for (int i = 5; i < lines.Length; i++)
+            // Se não encontrou o TicketId nas informações do ticket, pegar da primeira linha
+            if (string.IsNullOrEmpty(webhookRecive.TicketId))
             {
-                if (string.IsNullOrWhiteSpace(lines[i])) continue; // Ignorar linhas em branco
+                webhookRecive.TicketId = lines[0].Trim().TrimStart('0');
+            }
 
-                // Verificar se a linha contém uma data
-                if (lines[i].Trim().StartsWith("21-12-2024")) // Exemplo de data
+            // Determinar o tipo de notificação e processar dados específicos
+            if (body.Contains("**Nova Tarefa**"))
+            {
+                webhookRecive.Type = "Tarefa";
+                
+                // Encontrar o primeiro bloco de tarefa (mais recente)
+                int taskIndex = body.IndexOf("**Nova Tarefa**");
+                string taskBlock = body.Substring(taskIndex);
+                var taskLines = taskBlock.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                DateTime taskDate = DateTime.Now;
+                foreach (var line in taskLines)
                 {
-                    // A próxima linha é o autor
-                    string author = lines[i + 1].Trim();
-
-                    // A linha seguinte é a descrição
-                    string description = System.Text.RegularExpressions.Regex.Replace(
-                        lines[i + 2],
-                        "<[^>]+>",
-                        "").Trim();
-
-                    // Verificar se é um acompanhamento ou uma tarefa
-                    if (description.Contains("Novo Acompanhamento"))
+                    if (line.StartsWith("- **Data da Tarefa:**"))
                     {
-                        // Adicionar acompanhamento
-                        var webhookLog = new WebhookLog
+                        string dateStr = ExtractValue(line, "**Data da Tarefa:**");
+                        if (DateTime.TryParseExact(dateStr, "dd-MM-yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
                         {
-                            TicketId = ticketId.TrimStart('0'),
-                            FollowupDescription = $"{description} - Novo Acompanhamento",
-                            NumberOfFollowups = numberOfMessages.ToString(),
-                            Requesters = author,
-                            AssignedToTechnician = assignees,
-                            Status = status,
-                            Priority = priority,
-                            CreatedAt = DateTime.UtcNow
-                        };
-
-                        await LogDebugInfoAsync($"Dados extraídos - TicketId: {webhookLog.TicketId}, Mensagem: {webhookLog.FollowupDescription}");
-
-                        _dbContext.WebhookLogs.Add(webhookLog);
-                        await _dbContext.SaveChangesAsync();
-
-                        await SaveFollowupDataToFile(webhookLog); // Salvar em acompanhamentos.txt
-                        await _hubContext.Clients.All.SendAsync("ReceiveNotification", webhookLog.TicketId, webhookLog.FollowupDescription);
+                            taskDate = parsedDate;
+                        }
                     }
-                    else if (description.Contains("Nova Tarefa"))
+                    else if (line.StartsWith("- **Autor da Tarefa:**"))
+                        webhookRecive.Author = ExtractValue(line, "**Autor da Tarefa:**");
+                    else if (line.StartsWith("- **Descrição:**"))
+                        webhookRecive.Description = CleanHtmlTags(ExtractValue(line, "**Descrição:**"));
+                    else if (line.StartsWith("- **Tempo Estimado:**"))
+                        webhookRecive.EstimatedTime = ExtractValue(line, "**Tempo Estimado:**");
+                    else if (line.StartsWith("- **Categoria da Tarefa:**"))
+                        webhookRecive.TaskCategory = ExtractValue(line, "**Categoria da Tarefa:**");
+
+                    if (!string.IsNullOrEmpty(webhookRecive.Description)) 
+                        break; // Sair após encontrar a primeira descrição (mais recente)
+                }
+
+                webhookRecive.CreatedAt = taskDate;
+                await _hubContext.Clients.All.SendAsync("ReceiveTaskNotification", webhookRecive.TicketId, webhookRecive.Description);
+            }
+            else if (body.Contains("**Novo Acompanhamento**"))
+            {
+                webhookRecive.Type = "Acompanhamento";
+                
+                // Encontrar o primeiro bloco de acompanhamento (mais recente)
+                int followupIndex = body.IndexOf("**Novo Acompanhamento**");
+                string followupBlock = body.Substring(followupIndex);
+                var followupLines = followupBlock.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+
+                DateTime followupDate = DateTime.Now;
+                foreach (var line in followupLines)
+                {
+                    if (line.StartsWith("- **Data do Acompanhamento:**"))
                     {
-                        // Adicionar tarefa
-                        var taskLog = new TaskLog
+                        string dateStr = ExtractValue(line, "**Data do Acompanhamento:**");
+                        if (DateTime.TryParseExact(dateStr, "dd-MM-yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
                         {
-                            TaskId = ticketId.TrimStart('0'),
-                            TaskDescription = $"{description} - Nova Tarefa",
-                            CreatedAt = DateTime.UtcNow
-                        };
-
-                        await LogDebugInfoAsync($"Dados extraídos - TaskId: {taskLog.TaskId}, Descrição: {taskLog.TaskDescription}");
-
-                        _dbContext.TaskLogs.Add(taskLog);
-                        await _dbContext.SaveChangesAsync();
-
-                        await SaveTaskDataToFile(taskLog); // Salvar em tarefas.txt
-                        await _hubContext.Clients.All.SendAsync("ReceiveTaskNotification", taskLog.TaskId, taskLog.TaskDescription);
+                            followupDate = parsedDate;
+                        }
+                    }
+                    else if (line.StartsWith("- **Autor do Acompanhamento:**"))
+                        webhookRecive.Author = ExtractValue(line, "**Autor do Acompanhamento:**");
+                    else if (line.Contains("<p>"))
+                    {
+                        webhookRecive.Description = CleanHtmlTags(line);
+                        break; // Sair após encontrar a primeira descrição (mais recente)
                     }
                 }
+
+                webhookRecive.CreatedAt = followupDate;
+                await _hubContext.Clients.All.SendAsync("ReceiveNotification", webhookRecive.TicketId, webhookRecive.Description);
             }
+
+            // Garantir que nenhum campo esteja nulo
+            webhookRecive.Title ??= "";
+            webhookRecive.Description ??= "";
+            webhookRecive.Author ??= "";
+            webhookRecive.Assignees ??= "";
+            webhookRecive.Status ??= "";
+            webhookRecive.Priority ??= "";
+            webhookRecive.EstimatedTime ??= "";
+            webhookRecive.TaskCategory ??= "";
+
+            // Log antes de salvar
+            await LogDebugInfoAsync($"Tentando salvar - TicketId: {webhookRecive.TicketId}, " +
+                $"Tipo: {webhookRecive.Type}, " +
+                $"Título: {webhookRecive.Title}, " +
+                $"Autor: {webhookRecive.Author}, " +
+                $"Status: {webhookRecive.Status}, " +
+                $"Prioridade: {webhookRecive.Priority}, " +
+                $"Data: {webhookRecive.CreatedAt}, " +
+                $"Descrição: {webhookRecive.Description}");
+
+            _dbContext.WebHookRecives.Add(webhookRecive);
+            await _dbContext.SaveChangesAsync();
 
             return Ok(new { message = "Dados processados com sucesso." });
         }
         catch (Exception ex)
         {
-            await LogDebugInfoAsync($"Erro ao processar o webhook: {ex.Message}", ex);
-            return BadRequest(new { message = "Erro ao processar o webhook", error = ex.Message });
+            var innerException = ex.InnerException != null ? $" Inner Exception: {ex.InnerException.Message}" : "";
+            await LogDebugInfoAsync($"Erro ao processar o webhook: {ex.Message}{innerException}", ex);
+            return BadRequest(new { message = "Erro ao processar o webhook", error = ex.Message + innerException });
         }
+    }
+
+    private string ExtractValue(string line, string label)
+    {
+        return line.Replace("-", "").Replace(label, "").Trim();
+    }
+
+    private string CleanHtmlTags(string text)
+    {
+        if (string.IsNullOrEmpty(text))
+            return "";
+        return System.Text.RegularExpressions.Regex.Replace(text, "<[^>]+>", "").Trim();
     }
 
     private async Task SaveFollowupDataToFile(WebhookLog webhookLog)
